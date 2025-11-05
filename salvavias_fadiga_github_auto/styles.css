@@ -1,0 +1,17 @@
+
+:root{--bg:#0b1220;--fg:#e6eef8;--accent:#2dd4bf;--warn:#f59e0b;--danger:#ef4444}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.4 system-ui,Segoe UI,Roboto}
+header,footer{padding:12px 16px;background:#0f1b33;position:sticky;top:0;z-index:2}
+h1{margin:0;font-size:18px}
+main{padding:12px;max-width:980px;margin:0 auto}
+#video-area{position:relative;max-width:980px;margin:auto}
+#cam,#overlay{width:100%;border-radius:12px;background:#000}
+#overlay{position:absolute;left:0;top:0}
+#privacy{position:absolute;left:12px;bottom:10px;background:rgba(0,0,0,.5);padding:6px 10px;border-radius:8px;font-size:12px}
+#metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px}
+.card{background:#0f1b33;border:1px solid #132345;border-radius:12px;padding:10px}
+#controls{display:flex;gap:12px;align-items:center;margin-top:10px;flex-wrap:wrap}
+button{background:var(--accent);border:0;color:#05121f;padding:8px 14px;border-radius:10px;font-weight:700}
+#alerta{font-weight:800}
+.ok{color:#a7f3d0}.warn{color:var(--warn)}.danger{color:var(--danger)}
+#status{font-size:12px;opacity:.8}
