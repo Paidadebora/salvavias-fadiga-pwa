@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Salva-Vias | Detecção de Fadiga (PWA Offline)</title>
+  <meta name="theme-color" content="#0a2540"/>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="src/app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Detecção de Fadiga — Offline</h1>
+    <div id="status">Inicializando…</div>
+  </header>
+  <main>
+    <section id="video-area">
+      <video id="cam" playsinline autoplay muted></video>
+      <canvas id="overlay"></canvas>
+      <div id="privacy">Processamento 100% local • Sem envio de dados</div>
+    </section>
+    <section id="metrics">
+      <div class="card">
+        <h3>BPM (blinks/min)</h3>
+        <div id="bpm">—</div>
+      </div>
+      <div class="card">
+        <h3>PERCLOS (60s)</h3>
+        <div id="perclos">—</div>
+      </div>
+      <div class="card">
+        <h3>MAR (bocejo)</h3>
+        <div id="mar">—</div>
+      </div>
+      <div class="card">
+        <h3>Alerta</h3>
+        <div id="alerta">OK</div>
+      </div>
+    </section>
+    <section id="controls">
+      <button id="btnStart">Iniciar</button>
+      <label><input type="checkbox" id="chkAudio" checked> Áudio</label>
+      <label> Sensibilidade:
+        <input type="range" id="sens" min="0" max="100" value="50">
+      </label>
+    </section>
+  </main>
+  <footer>
+    <small>Avansat • PWA offline (instale no iPhone via “Compartilhar → Adicionar à Tela de Início”).</small>
+  </footer>
+</body>
+</html>
