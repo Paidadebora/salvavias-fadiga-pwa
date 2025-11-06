@@ -5,9 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>Salva-Vias | Detecção de Fadiga (PWA Offline)</title>
   <meta name="theme-color" content="#0a2540"/>
+
+  <!-- PWA manifest -->
   <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- Icons -->
   <link rel="icon" href="assets/icons/icon-192.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+  <!-- Apple PWA meta -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- iOS splash screens (exemplos para iPhone; gere imagens com o script e atualize as dimensões conforme necessário) -->
+  <link rel="apple-touch-startup-image" href="assets/splash/iphone-390x844.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)">
+  <link rel="apple-touch-startup-image" href="assets/splash/iphone-428x926.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)">
+  <!-- Adicione mais tags de splash aqui para cobrir outros tamanhos/resoluções -->
+
   <link rel="stylesheet" href="styles.css">
   <script defer src="src/app.js"></script>
 </head>
@@ -51,5 +65,18 @@
   <footer>
     <small>Avansat • PWA offline (instale no iPhone via “Compartilhar → Adicionar à Tela de Início”).</small>
   </footer>
+
+  <!-- Service worker registration (mantém compatibilidade com navegadores desktop e iOS) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(reg => {
+          console.log('Service worker registrado:', reg.scope);
+        }).catch(err => {
+          console.warn('Falha ao registrar service worker:', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
