@@ -1,0 +1,28 @@
+# Node / npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.bak
+*.tmp
+*.swp
+
+# Build / logs / output
+dist/
+coverage/
+*.log
+
+# IDE / JetBrains
+.idea/
+
+desktop.ini
