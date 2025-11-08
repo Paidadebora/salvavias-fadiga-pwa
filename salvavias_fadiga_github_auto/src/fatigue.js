@@ -1,4 +1,4 @@
-export class FatigueEngine {
+﻿export class FatigueEngine {
   constructor(cb={}){
     this.cb = cb;
     this.config = { EAR_BLINK:0.18, EAR_CLOSED:0.17, MAR_YAWN:0.6, WINDOW_S:60, FPS_EST:24 };
@@ -28,14 +28,14 @@ export class FatigueEngine {
     const MAR=()=>{{ const [t,b,r,l]=M.map(i=>pts[i]); return d(t,b)/d(l,r); }};
     const ear=(EAR(L)+EAR(R))/2, mar=MAR();
     this.state.frames++; if (ear<this.config.EAR_CLOSED) this.state.closedFrames++;
-    if (!this._wasClosed and ear<this.config.EAR_BLINK) this._wasClosed=true;
-    if (this._wasClosed and ear>=this.config.EAR_BLINK) {{ this._wasClosed=false; this.state.blinks++; }}
+    if (!this._wasClosed && ear<this.config.EAR_BLINK) this._wasClosed=true;
+    if (this._wasClosed && ear>=this.config.EAR_BLINK) {{ this._wasClosed=false; this.state.blinks++; }}
     const wf=Math.max(1, Math.round(this.config.WINDOW_S*this.config.FPS_EST));
     if (this.state.frames % wf === 0){{
       const perclos=this.state.closedFrames/wf, bpm=this.state.blinks*(60/this.config.WINDOW_S);
       this.state.perclos=perclos; this.state.blinksPerMin=bpm; this.state.blinks=0; this.state.closedFrames=0;
       let level='ok', st='OK';
-      if (perclos>0.2 || bpm<8 || mar>this.config.MAR_YAWN) {{ level='warn'; st='Atenção'; }}
+      if (perclos>0.2 || bpm<8 || mar>this.config.MAR_YAWN) {{ level='warn'; st='AtenÃ§Ã£o'; }}
       if (perclos>0.4 || bpm<5 || mar>(this.config.MAR_YAWN+0.15)) {{ level='danger'; st='Fadiga'; }}
       this.state.level=level; this.state.status=st; this.cb.onAlert?.(level, st);
     }}
@@ -43,3 +43,4 @@ export class FatigueEngine {
   }
   report(pts){ this.cb.onMetrics?.({ ear:this.state.ear, mar:this.state.mar, perclos:this.state.perclos, blinksPerMin:this.state.blinksPerMin, level:this.state.level, state:this.state.status }); this.onLandmarks?.(pts); }
 }
+
